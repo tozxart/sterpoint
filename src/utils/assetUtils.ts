@@ -10,11 +10,15 @@ export function getAssetPath(path: string): string {
   // For production
   const base = "/sterpoint";
 
-  // Handle social media icons
-  if (cleanPath.includes("social/")) {
+  // Handle images in subdirectories (social, flags)
+  if (cleanPath.includes("/")) {
+    // If it's already in the images directory, don't add it again
+    if (cleanPath.startsWith("images/")) {
+      return `${base}/${cleanPath}`;
+    }
     return `${base}/images/${cleanPath}`;
   }
 
-  // Handle root level files like logo
+  // Handle root level files like logo.png
   return `${base}/${cleanPath}`;
 }
