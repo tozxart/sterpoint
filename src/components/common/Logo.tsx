@@ -1,4 +1,5 @@
 import React from "react";
+import { getAssetPath } from "../../utils/assetUtils";
 
 interface LogoProps {
   className?: string;
@@ -7,9 +8,9 @@ interface LogoProps {
 export function Logo({ className = "" }: LogoProps) {
   return (
     <img
-      src="/src/images/logo.png"
+      src={getAssetPath("logo.png")}
       alt="Ster Point"
-      className={`object-contain ${className}`}
+      className={`h-12 w-auto ${className}`}
       style={{ imageRendering: "crisp-edges" }}
     />
   );

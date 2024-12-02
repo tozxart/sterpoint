@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { ChevronDown } from "lucide-react";
 import type { Language } from "../../types";
 import { motion, AnimatePresence } from "framer-motion";
+import { getAssetPath } from "../../utils/assetUtils";
 
 interface LanguageToggleProps {
   currentLang: Language;
@@ -12,12 +13,12 @@ interface LanguageToggleProps {
 const languageConfig = {
   pl: {
     name: "PL",
-    flag: "/flags/pl.svg",
+    flag: "flags/pl.svg",
     nativeName: "PL",
   },
   en: {
     name: "EN",
-    flag: "/flags/gb.svg",
+    flag: "flags/gb.svg",
     nativeName: "EN",
   },
 };
@@ -58,7 +59,7 @@ export function LanguageToggle({
         aria-expanded={isOpen}
         aria-haspopup="true">
         <motion.img
-          src={languageConfig[currentLang].flag}
+          src={getAssetPath(languageConfig[currentLang].flag)}
           alt={`${languageConfig[currentLang].name} flag`}
           className="language-flag"
           whileHover={{ scale: 1.1, rotate: -5 }}
@@ -92,7 +93,7 @@ export function LanguageToggle({
                   }`}>
                   <motion.img
                     whileHover={{ scale: 1.1, rotate: -5 }}
-                    src={config.flag}
+                    src={getAssetPath(config.flag)}
                     alt={`${config.name} flag`}
                     className="language-flag"
                   />

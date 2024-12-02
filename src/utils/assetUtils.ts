@@ -4,16 +4,22 @@ export function getAssetPath(path: string): string {
 
   // For development
   if (import.meta.env.DEV) {
+    // Handle flags
+    if (cleanPath.startsWith("flags/")) {
+      return `/images/${cleanPath}`;
+    }
+    // Handle social icons
+    if (cleanPath.startsWith("social/")) {
+      return `/images/${cleanPath}`;
+    }
+    // Handle logo
+    if (cleanPath === "logo.png") {
+      return `/images/${cleanPath}`;
+    }
     return `/${cleanPath}`;
   }
 
-  // For production
+  // For production (GitHub Pages)
   const base = "/sterpoint";
-
-  // Always ensure path starts with /images/
-  if (!cleanPath.startsWith("images/")) {
-    return `${base}/images/${cleanPath}`;
-  }
-
-  return `${base}/${cleanPath}`;
+  return `${base}/images/${cleanPath}`;
 }

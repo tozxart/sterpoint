@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Logo } from "./Logo";
+import { getAssetPath } from "../../utils/assetUtils";
 import type { Language } from "../../types";
 
 interface FooterProps {
@@ -198,7 +199,7 @@ export function Footer({ currentLang }: FooterProps) {
                 rel="noopener noreferrer"
                 className="social-icon-link">
                 <img
-                  src="/images/social/linkedin.svg"
+                  src={getAssetPath("social/linkedin.svg")}
                   alt="LinkedIn"
                   className="social-icon"
                 />
@@ -209,7 +210,7 @@ export function Footer({ currentLang }: FooterProps) {
                 rel="noopener noreferrer"
                 className="social-icon-link">
                 <img
-                  src="/images/social/youtube.svg"
+                  src={getAssetPath("social/youtube.svg")}
                   alt="YouTube"
                   className="social-icon"
                 />
@@ -220,7 +221,7 @@ export function Footer({ currentLang }: FooterProps) {
                 rel="noopener noreferrer"
                 className="social-icon-link">
                 <img
-                  src="/images/social/facebook.svg"
+                  src={getAssetPath("social/facebook.svg")}
                   alt="Facebook"
                   className="social-icon"
                 />
@@ -231,7 +232,7 @@ export function Footer({ currentLang }: FooterProps) {
                 rel="noopener noreferrer"
                 className="social-icon-link">
                 <img
-                  src="/images/social/instagram.svg"
+                  src={getAssetPath("social/instagram.svg")}
                   alt="Instagram"
                   className="social-icon"
                 />
