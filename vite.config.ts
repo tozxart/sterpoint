@@ -15,8 +15,8 @@ export default defineConfig({
         main: resolve(__dirname, "index.html"),
       },
       output: {
-        assetFileNames: (assetInfo) => {
-          const info = assetInfo.name.split(".");
+        assetFileNames: ({ name = "" }) => {
+          const info = name.split(".");
           const ext = info[info.length - 1];
           if (/png|jpe?g|svg|gif|tiff|bmp|ico/i.test(ext)) {
             return `images/[name][extname]`;
