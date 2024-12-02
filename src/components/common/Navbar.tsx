@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Logo } from "./Logo";
 import { LanguageToggle } from "./LanguageToggle";
+import { Link, useLocation } from "react-router-dom";
 import type { Language } from "../../types";
 
 interface NavItem {
@@ -8,7 +9,7 @@ interface NavItem {
     pl: string;
     en: string;
   };
-  href: string;
+  to: string;
 }
 
 interface NavbarProps {
@@ -22,35 +23,35 @@ const navItems: NavItem[] = [
       pl: "Strona główna",
       en: "Home",
     },
-    href: "/",
+    to: "/",
   },
   {
     label: {
       pl: "O nas",
       en: "About Us",
     },
-    href: "/about",
+    to: "/about",
   },
   {
     label: {
       pl: "Produkty",
       en: "Products",
     },
-    href: "/products",
+    to: "/products",
   },
   {
     label: {
       pl: "Usługi",
       en: "Services",
     },
-    href: "/services",
+    to: "/services",
   },
   {
     label: {
       pl: "Kontakt",
       en: "Contact",
     },
-    href: "/contact",
+    to: "/contact",
   },
 ];
 
@@ -64,14 +65,13 @@ const mobileMenuText = {
 export function Navbar({ currentLang, onLanguageToggle }: NavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
 
-  // Update the language initialization effect
   useEffect(() => {
     const savedLang = localStorage.getItem("preferred_language") as Language;
     if (savedLang && savedLang !== currentLang) {
       onLanguageToggle(savedLang);
     } else if (!savedLang) {
-      // Set default language to Polish if no language is saved
       localStorage.setItem("preferred_language", "pl");
       onLanguageToggle("pl");
     }
@@ -88,15 +88,20 @@ export function Navbar({ currentLang, onLanguageToggle }: NavbarProps) {
   }, []);
 
   const NavItem = ({ item }: { item: NavItem }) => {
+    const isActive = location.pathname === item.to;
     return (
-      <a
-        href={item.href}
+      <Link
+        to={item.to}
         className={`relative px-4 py-2 transition-colors duration-200 ease-in-out group ${
           isScrolled ? "text-gray-900" : "text-white"
-        }`}>
+        } ${isActive ? "font-semibold" : ""}`}>
         {item.label[currentLang]}
-        <span className="absolute bottom-0 left-0 w-full h-0.5 bg-current transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200 ease-in-out" />
-      </a>
+        <span
+          className={`absolute bottom-0 left-0 w-full h-0.5 bg-current transform ${
+            isActive ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
+          } transition-transform duration-200 ease-in-out`}
+        />
+      </Link>
     );
   };
 
@@ -108,13 +113,13 @@ export function Navbar({ currentLang, onLanguageToggle }: NavbarProps) {
       <div className="max-w-[1440px] mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between">
           <div className="flex-shrink-0">
-            <a href="/" className="flex items-center">
+            <Link to="/" className="flex items-center">
               <Logo
                 className={`h-8 md:h-10 w-auto ${
                   isScrolled ? "" : "filter brightness-0 invert"
                 }`}
               />
-            </a>
+            </Link>
           </div>
 
           {/* Desktop Navigation */}
@@ -172,16 +177,17 @@ export function Navbar({ currentLang, onLanguageToggle }: NavbarProps) {
                   : "bg-transparent"
               }`}>
               {navItems.map((item) => (
-                <a
+                <Link
                   key={item.label[currentLang]}
-                  href={item.href}
+                  to={item.to}
+                  onClick={() => setIsMenuOpen(false)}
                   className={`block px-4 py-2 text-base font-medium rounded-md transition-colors duration-150 ease-in-out ${
                     isScrolled
                       ? "text-gray-900 hover:bg-gray-50"
                       : "text-white hover:bg-white/10"
-                  }`}>
+                  } ${location.pathname === item.to ? "font-semibold" : ""}`}>
                   {item.label[currentLang]}
-                </a>
+                </Link>
               ))}
               <div className="px-4 py-2">
                 <LanguageToggle
