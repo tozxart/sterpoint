@@ -16,6 +16,14 @@ export function getAssetPath(path: string): string {
     if (cleanPath === "logo.png") {
       return `/images/${cleanPath}`;
     }
+    // Handle PDFs
+    if (cleanPath.startsWith("pdf/")) {
+      return `/images/${cleanPath}`;
+    }
+    // Handle vending machine images
+    if (cleanPath.startsWith("vendingMachine/")) {
+      return `/images/${cleanPath}`;
+    }
     return `/${cleanPath}`;
   }
 

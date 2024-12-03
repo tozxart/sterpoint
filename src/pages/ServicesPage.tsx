@@ -299,23 +299,23 @@ export function ServicesPage({
                   initial={{ opacity: 0, y: 20 }}
                   animate={servicesInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.6, delay: index * 0.2 }}
-                  className="service-card">
-                  <div className="relative overflow-hidden rounded-t-lg h-48">
+                  className="bg-white rounded-lg shadow-md overflow-hidden flex flex-col h-full">
+                  <div className="relative overflow-hidden h-64 bg-gray-100">
                     <img
                       src={service.image}
                       alt={service.title}
-                      className="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500"
+                      className="w-full h-full object-contain p-4"
                     />
                   </div>
-                  <div className="p-6 bg-white rounded-b-lg">
+                  <div className="p-6 flex-1 flex flex-col">
                     <h3 className="text-2xl font-bold text-gray-900 mb-4">
                       {service.title}
                     </h3>
                     <p className="text-gray-600 mb-6">{service.description}</p>
 
-                    <div className="mb-6">
+                    <div className="mb-6 flex-1">
                       <h4 className="text-lg font-semibold text-gray-900 mb-3">
-                        Features:
+                        {currentLang === "pl" ? "Funkcje:" : "Features:"}
                       </h4>
                       <ul className="space-y-2">
                         {service.features.map((feature, featureIndex) => (
@@ -323,7 +323,7 @@ export function ServicesPage({
                             key={featureIndex}
                             className="flex items-center text-gray-600">
                             <svg
-                              className="w-5 h-5 text-primary-600 mr-3"
+                              className="w-5 h-5 text-primary-600 mr-3 flex-shrink-0"
                               fill="none"
                               viewBox="0 0 24 24"
                               stroke="currentColor">
@@ -342,7 +342,7 @@ export function ServicesPage({
 
                     <div className="mb-6">
                       <h4 className="text-lg font-semibold text-gray-900 mb-3">
-                        Benefits:
+                        {currentLang === "pl" ? "Korzyści:" : "Benefits:"}
                       </h4>
                       <ul className="space-y-2">
                         {service.benefits.map((benefit, benefitIndex) => (
@@ -350,7 +350,7 @@ export function ServicesPage({
                             key={benefitIndex}
                             className="flex items-center text-gray-600">
                             <svg
-                              className="w-5 h-5 text-green-500 mr-3"
+                              className="w-5 h-5 text-green-500 mr-3 flex-shrink-0"
                               fill="none"
                               viewBox="0 0 24 24"
                               stroke="currentColor">
@@ -367,11 +367,18 @@ export function ServicesPage({
                       </ul>
                     </div>
 
-                    <AnimatedButton
-                      href={`/services/${service.id}`}
-                      text="Learn More"
-                      variant="primary"
-                    />
+                    <div className="mt-auto">
+                      <AnimatedButton
+                        href={`/services/${service.id}`}
+                        text={
+                          currentLang === "pl"
+                            ? "Dowiedz się więcej"
+                            : "Learn More"
+                        }
+                        variant="primary"
+                        className="w-full justify-center text-base font-medium py-3 px-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
+                      />
+                    </div>
                   </div>
                 </motion.div>
               ))}

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { Logo } from "./Logo";
 import { LanguageToggle } from "./LanguageToggle";
-import { Link, useLocation } from "react-router-dom";
 import type { Language } from "../../types";
 
 interface NavItem {
@@ -9,7 +9,7 @@ interface NavItem {
     pl: string;
     en: string;
   };
-  to: string;
+  href: string;
 }
 
 interface NavbarProps {
@@ -23,35 +23,35 @@ const navItems: NavItem[] = [
       pl: "Strona główna",
       en: "Home",
     },
-    to: "/",
+    href: "/",
   },
   {
     label: {
       pl: "O nas",
       en: "About Us",
     },
-    to: "/about",
+    href: "/about",
   },
   {
     label: {
       pl: "Produkty",
       en: "Products",
     },
-    to: "/products",
+    href: "/products",
   },
   {
     label: {
       pl: "Usługi",
       en: "Services",
     },
-    to: "/services",
+    href: "/services",
   },
   {
     label: {
       pl: "Kontakt",
       en: "Contact",
     },
-    to: "/contact",
+    href: "/contact",
   },
 ];
 
@@ -88,10 +88,10 @@ export function Navbar({ currentLang, onLanguageToggle }: NavbarProps) {
   }, []);
 
   const NavItem = ({ item }: { item: NavItem }) => {
-    const isActive = location.pathname === item.to;
+    const isActive = location.pathname === item.href;
     return (
       <Link
-        to={item.to}
+        to={item.href}
         className={`relative px-4 py-2 transition-colors duration-200 ease-in-out group ${
           isScrolled ? "text-gray-900" : "text-white"
         } ${isActive ? "font-semibold" : ""}`}>
@@ -176,19 +176,22 @@ export function Navbar({ currentLang, onLanguageToggle }: NavbarProps) {
                   ? "bg-white border-t border-gray-200"
                   : "bg-transparent"
               }`}>
-              {navItems.map((item) => (
-                <Link
-                  key={item.label[currentLang]}
-                  to={item.to}
-                  onClick={() => setIsMenuOpen(false)}
-                  className={`block px-4 py-2 text-base font-medium rounded-md transition-colors duration-150 ease-in-out ${
-                    isScrolled
-                      ? "text-gray-900 hover:bg-gray-50"
-                      : "text-white hover:bg-white/10"
-                  } ${location.pathname === item.to ? "font-semibold" : ""}`}>
-                  {item.label[currentLang]}
-                </Link>
-              ))}
+              {navItems.map((item) => {
+                const isActive = location.pathname === item.href;
+                return (
+                  <Link
+                    key={item.label[currentLang]}
+                    to={item.href}
+                    onClick={() => setIsMenuOpen(false)}
+                    className={`block px-4 py-2 text-base font-medium rounded-md transition-colors duration-150 ease-in-out ${
+                      isScrolled
+                        ? "text-gray-900 hover:bg-gray-50"
+                        : "text-white hover:bg-white/10"
+                    } ${isActive ? "font-semibold bg-opacity-10" : ""}`}>
+                    {item.label[currentLang]}
+                  </Link>
+                );
+              })}
               <div className="px-4 py-2">
                 <LanguageToggle
                   currentLang={currentLang}

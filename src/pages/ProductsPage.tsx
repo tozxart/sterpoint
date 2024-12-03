@@ -5,6 +5,7 @@ import { Navbar } from "../components/common/Navbar";
 import { Footer } from "../components/common/Footer";
 import type { Language } from "../types";
 import { motion } from "framer-motion";
+import { getAssetPath } from "../utils/assetUtils";
 
 interface ProductsPageProps {
   currentLang: Language;
@@ -70,29 +71,32 @@ export function ProductsPage({
           category: "vending",
         },
         {
-          id: "swimming",
+          id: "swimming-accessories",
           title: "Akcesoria Pływackie",
-          description: "Profesjonalny sprzęt i akcesoria do pływania.",
+          description:
+            "Profesjonalne akcesoria do pływania dla Twojego obiektu",
           features: [
-            "Czepki i okulary",
-            "Ręczniki",
-            "Akcesoria treningowe",
-            "Stroje kąpielowe",
+            "Wysokiej jakości materiały",
+            "Zgodność z normami bezpieczeństwa",
+            "Trwałość i niezawodność",
+            "Łatwa konserwacja",
           ],
-          image: "https://topsec.fr/wp-content/uploads/2022/02/img_piscine.jpg",
+          image:
+            "https://topsec.fr/wp-content/uploads/2022/03/distributeur_FR.png",
           category: "swimming",
         },
         {
-          id: "fitness",
+          id: "fitness-equipment",
           title: "Sprzęt Fitness",
-          description: "Wysokiej jakości akcesoria do ćwiczeń i treningu.",
+          description: "Nowoczesny sprzęt fitness dla Twojej siłowni",
           features: [
-            "Maty do ćwiczeń",
-            "Akcesoria treningowe",
-            "Odzież sportowa",
-            "Suplementy",
+            "Ergonomiczna konstrukcja",
+            "Profesjonalne wykonanie",
+            "Zaawansowane funkcje",
+            "Komfort użytkowania",
           ],
-          image: "https://topsec.fr/wp-content/uploads/2022/02/img_fitness.jpg",
+          image:
+            "https://topsec.fr/wp-content/uploads/elementor/thumbs/distributeur_swind_1-pwjb8ux58rv0c9kmcsmaccrsk3hfg7lav8vvn6iwik.png",
           category: "fitness",
         },
         {
@@ -107,7 +111,7 @@ export function ProductsPage({
             "Obuwie specjalistyczne",
             "Wyposażenie kortów",
           ],
-          image: "/images/products/tennis-padel.jpg",
+          image: getAssetPath("vendingMachine/tenis.png"),
           category: "tennis",
         },
       ] as Product[],
@@ -147,29 +151,31 @@ export function ProductsPage({
           category: "vending",
         },
         {
-          id: "swimming",
+          id: "swimming-accessories",
           title: "Swimming Accessories",
-          description: "Professional swimming equipment and accessories.",
+          description: "Professional swimming accessories for your facility",
           features: [
-            "Caps and goggles",
-            "Towels",
-            "Training accessories",
-            "Swimwear",
+            "High-quality materials",
+            "Safety standards compliant",
+            "Durability and reliability",
+            "Easy maintenance",
           ],
-          image: "https://topsec.fr/wp-content/uploads/2022/02/img_piscine.jpg",
+          image:
+            "https://topsec.fr/wp-content/uploads/2022/03/distributeur_FR.png",
           category: "swimming",
         },
         {
-          id: "fitness",
+          id: "fitness-equipment",
           title: "Fitness Equipment",
-          description: "High-quality exercise and training accessories.",
+          description: "Modern fitness equipment for your gym",
           features: [
-            "Exercise mats",
-            "Training accessories",
-            "Sports clothing",
-            "Supplements",
+            "Ergonomic design",
+            "Professional build quality",
+            "Advanced features",
+            "User comfort",
           ],
-          image: "https://topsec.fr/wp-content/uploads/2022/02/img_fitness.jpg",
+          image:
+            "https://topsec.fr/wp-content/uploads/elementor/thumbs/distributeur_swind_1-pwjb8ux58rv0c9kmcsmaccrsk3hfg7lav8vvn6iwik.png",
           category: "fitness",
         },
         {
@@ -185,7 +191,7 @@ export function ProductsPage({
             "Specialized footwear",
             "Court equipment",
           ],
-          image: "/images/products/tennis-padel.jpg",
+          image: getAssetPath("vendingMachine/tenis.png"),
           category: "tennis",
         },
       ] as Product[],
@@ -253,12 +259,12 @@ export function ProductsPage({
                   {content[currentLang].catalogs.general}
                 </h3>
                 <a
-                  href="/catalogs/general-product-catalog.pdf"
+                  href={getAssetPath("pdf/Catalogue 2024.pdf")}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors">
+                  className="inline-flex items-center px-6 py-3 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors duration-300 shadow-md hover:shadow-lg">
                   <svg
-                    className="w-5 h-5 mr-2"
+                    className="w-5 h-5 mr-3"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24">
@@ -283,7 +289,7 @@ export function ProductsPage({
                   {content[currentLang].catalogs.vendingTypes}
                 </h3>
                 <a
-                  href="/catalogs/vending-machines-types.pdf"
+                  href={getAssetPath("pdf/Vending Machine Types.pdf")}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors">
@@ -322,29 +328,27 @@ export function ProductsPage({
               </p>
             </motion.div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {content[currentLang].products.map((product, index) => (
                 <motion.div
                   key={product.id}
                   initial={{ opacity: 0, y: 20 }}
                   animate={productsInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="product-card bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-                  <div className="relative overflow-hidden h-48">
+                  transition={{ duration: 0.6, delay: index * 0.2 }}
+                  className="bg-white rounded-lg shadow-md overflow-hidden flex flex-col h-full">
+                  <div className="relative h-64 overflow-hidden bg-gray-100">
                     <img
                       src={product.image}
                       alt={product.title}
-                      className="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500"
+                      className="w-full h-full object-contain p-4"
                     />
                   </div>
-                  <div className="p-4">
+                  <div className="p-6 flex-1 flex flex-col">
                     <h3 className="text-xl font-bold text-gray-900 mb-2">
                       {product.title}
                     </h3>
-                    <p className="text-gray-600 text-sm mb-4 line-clamp-2">
-                      {product.description}
-                    </p>
-                    <ul className="space-y-2 mb-4">
+                    <p className="text-gray-600 mb-4">{product.description}</p>
+                    <ul className="space-y-2 mb-4 flex-1">
                       {product.features
                         .slice(0, 3)
                         .map((feature, featureIndex) => (
@@ -367,7 +371,7 @@ export function ProductsPage({
                           </li>
                         ))}
                     </ul>
-                    <div className="mt-4">
+                    <div className="mt-auto">
                       <AnimatedButton
                         href={`/products/${product.id}`}
                         text={
@@ -376,7 +380,7 @@ export function ProductsPage({
                             : "Learn More"
                         }
                         variant="primary"
-                        className="w-full text-center text-sm py-2"
+                        className="w-full justify-center text-base font-medium py-3 px-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
                       />
                     </div>
                   </div>
