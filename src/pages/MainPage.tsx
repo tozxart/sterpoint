@@ -248,7 +248,7 @@ export function MainPage({ currentLang, onLanguageToggle }: MainPageProps) {
               {content[currentLang].hero.title}
             </h1>
             <div className="mt-[-1rem] flex justify-center">
-              <Logo className="w-80 h-auto filter brightness-0 invert" />
+              <Logo className="w-48 md:w-64 lg:w-80 h-auto filter brightness-0 invert" />
             </div>
           </div>
         </div>
