@@ -4,6 +4,7 @@ import { Navbar } from "../../components/common/Navbar";
 import { Footer } from "../../components/common/Footer";
 import type { Language } from "../../types";
 import { motion } from "framer-motion";
+import { getAssetPath } from "../../utils/assetUtils";
 
 interface SwimmingAccessoriesPageProps {
   currentLang: Language;
@@ -100,7 +101,7 @@ export function SwimmingAccessoriesPage({
         <div className="relative h-[60vh] min-h-[600px] overflow-hidden">
           <div className="absolute inset-0">
             <img
-              src="/SwimmingAccessories/9.png"
+              src={getAssetPath("SwimmingAccessories/9.png")}
               alt="Swimming Accessories"
               className="w-full h-full object-cover"
             />
@@ -193,7 +194,7 @@ export function SwimmingAccessoriesPage({
                 className="w-full rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
                 <div className="max-w-5xl mx-auto">
                   <img
-                    src={`/SwimmingAccessories/${num}.png`}
+                    src={getAssetPath(`SwimmingAccessories/${num}.png`)}
                     alt={`Swimming Product ${num}`}
                     className="w-full h-auto"
                   />

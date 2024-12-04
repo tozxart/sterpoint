@@ -4,6 +4,7 @@ import { Navbar } from "../../components/common/Navbar";
 import { Footer } from "../../components/common/Footer";
 import type { Language } from "../../types";
 import { motion } from "framer-motion";
+import { getAssetPath } from "../../utils/assetUtils";
 
 interface TennisPadelPageProps {
   currentLang: Language;
@@ -87,7 +88,7 @@ export function TennisPadelPage({
         <div className="relative h-[60vh] min-h-[600px] overflow-hidden">
           <div className="absolute inset-0">
             <img
-              src="/images/TennisPadel/1.png"
+              src={getAssetPath("images/TennisPadel/1.png")}
               alt="Tennis and Padel Equipment"
               className="w-full h-full object-cover"
             />
@@ -157,7 +158,7 @@ export function TennisPadelPage({
                       className="w-full rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
                       <div className="max-w-6xl mx-auto">
                         <img
-                          src={`/images/TennisPadel/${num}.png`}
+                          src={getAssetPath(`images/TennisPadel/${num}.png`)}
                           alt={`Tennis and Padel Equipment ${num}`}
                           className="w-full h-auto"
                         />

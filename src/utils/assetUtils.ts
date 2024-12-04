@@ -24,10 +24,34 @@ export function getAssetPath(path: string): string {
     if (cleanPath.startsWith("vendingMachine/")) {
       return `/images/${cleanPath}`;
     }
+    // Handle swimming accessories images
+    if (cleanPath.startsWith("SwimmingAccessories/")) {
+      return `/${cleanPath}`;
+    }
+    // Handle fitness equipment images
+    if (cleanPath.startsWith("images/FitnessEquipment/")) {
+      return `/${cleanPath}`;
+    }
+    // Handle tennis and padel images
+    if (cleanPath.startsWith("images/TennisPadel/")) {
+      return `/${cleanPath}`;
+    }
     return `/${cleanPath}`;
   }
 
   // For production (GitHub Pages)
   const base = "/sterpoint";
+  // Handle swimming accessories images
+  if (cleanPath.startsWith("SwimmingAccessories/")) {
+    return `${base}/${cleanPath}`;
+  }
+  // Handle fitness equipment images
+  if (cleanPath.startsWith("images/FitnessEquipment/")) {
+    return `${base}/${cleanPath}`;
+  }
+  // Handle tennis and padel images
+  if (cleanPath.startsWith("images/TennisPadel/")) {
+    return `${base}/${cleanPath}`;
+  }
   return `${base}/images/${cleanPath}`;
 }
