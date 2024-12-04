@@ -62,7 +62,7 @@ export function MainPage({ currentLang, onLanguageToggle }: MainPageProps) {
         cta: "Odkryj więcej",
       },
       cornerShop: {
-        title: "SKLEP NAROŻNY",
+        title: "KĄCIK SKLEPOWY",
         description:
           "Dodatkowa gama artykułów sportowych i rekreacyjnych dla wszystkich rodzajów i stylów sportu.\nJeszcze lepiej, gdy masz wybór!",
         cta: "Odkryj więcej",
@@ -96,7 +96,7 @@ export function MainPage({ currentLang, onLanguageToggle }: MainPageProps) {
               text: "Automaty vendingowe express",
               href: "/our-expertise/express-vending-machines",
             },
-            { text: "Sklep narożny", href: "/our-expertise/corner-shop" },
+            { text: "Kącik sklepowy", href: "/our-expertise/corner-shop" },
             { text: "Sklep koncepcyjny", href: "/our-expertise/concept-store" },
           ],
         },
@@ -271,7 +271,7 @@ export function MainPage({ currentLang, onLanguageToggle }: MainPageProps) {
                   {content[currentLang].leader.description}
                 </p>
                 <AnimatedButton
-                  href="/our-brands"
+                  href="/products"
                   text={content[currentLang].leader.cta}
                 />
               </div>
@@ -323,7 +323,7 @@ export function MainPage({ currentLang, onLanguageToggle }: MainPageProps) {
                   {content[currentLang].expertise.description}
                 </p>
                 <AnimatedButton
-                  href="/our-expertise"
+                  href="/services"
                   text={content[currentLang].expertise.cta}
                 />
               </div>
@@ -373,7 +373,7 @@ export function MainPage({ currentLang, onLanguageToggle }: MainPageProps) {
                     {content[currentLang].vending.description}
                   </p>
                   <AnimatedButton
-                    href="/our-expertise/express-vending-machines"
+                    href="/services"
                     text={content[currentLang].vending.cta}
                   />
                 </div>
@@ -401,7 +401,7 @@ export function MainPage({ currentLang, onLanguageToggle }: MainPageProps) {
                   </span>
                 </h2>
                 <AnimatedButton
-                  href="/our-expertise/corner-shop"
+                  href="/services"
                   text={content[currentLang].cornerShop.cta}
                 />
               </div>
@@ -423,7 +423,7 @@ export function MainPage({ currentLang, onLanguageToggle }: MainPageProps) {
                   </h2>
                   <div className="text-right">
                     <AnimatedButton
-                      href="/contact-us"
+                      href="/contact"
                       text={content[currentLang].contact.cta}
                       variant="primary"
                     />

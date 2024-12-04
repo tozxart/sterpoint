@@ -250,10 +250,7 @@ export function AboutPage({ currentLang, onLanguageToggle }: AboutPageProps) {
                           </div>
                           <div className="timeline-line"></div>
                         </div>
-                        <div className="timeline-right mobile-only">
-                          <h2>{item.title}</h2>
-                          <p>{item.description}</p>
-                        </div>
+                        <div className="timeline-right"></div>
                       </>
                     ) : (
                       <>
@@ -342,7 +339,7 @@ export function AboutPage({ currentLang, onLanguageToggle }: AboutPageProps) {
                 {content[currentLang].team.description}
               </p>
               <AnimatedButton
-                href="/careers"
+                href="/contact"
                 text={content[currentLang].team.cta}
                 variant="primary"
               />

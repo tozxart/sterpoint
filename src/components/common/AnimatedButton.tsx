@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 interface AnimatedButtonProps {
   href: string;
@@ -21,12 +22,12 @@ export function AnimatedButton({
   };
 
   return (
-    <a
-      href={href}
+    <Link
+      to={href}
       className={`${baseClasses} ${variantClasses[variant]} ${
         className || ""
       }`}>
       {text}
-    </a>
+    </Link>
   );
 }
