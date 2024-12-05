@@ -47,7 +47,7 @@ export function getAssetPath(path: string): string {
   const base = "/sterpoint";
   // Handle swimming accessories images
   if (cleanPath.startsWith("SwimmingAccessories/")) {
-    return `${base}/${cleanPath}`;
+    return `${base}/images/${cleanPath}`;
   }
   // Handle fitness equipment images
   if (cleanPath.startsWith("images/FitnessEquipment/")) {
