@@ -26,7 +26,7 @@ export function getAssetPath(path: string): string {
     }
     // Handle swimming accessories images
     if (cleanPath.startsWith("SwimmingAccessories/")) {
-      return `/${cleanPath}`;
+      return `/images/${cleanPath}`;
     }
     // Handle fitness equipment images
     if (cleanPath.startsWith("images/FitnessEquipment/")) {
@@ -34,6 +34,10 @@ export function getAssetPath(path: string): string {
     }
     // Handle tennis and padel images
     if (cleanPath.startsWith("images/TennisPadel/")) {
+      return `/${cleanPath}`;
+    }
+    // Handle services images
+    if (cleanPath.startsWith("images/Services/")) {
       return `/${cleanPath}`;
     }
     return `/${cleanPath}`;
@@ -51,6 +55,10 @@ export function getAssetPath(path: string): string {
   }
   // Handle tennis and padel images
   if (cleanPath.startsWith("images/TennisPadel/")) {
+    return `${base}/${cleanPath}`;
+  }
+  // Handle services images
+  if (cleanPath.startsWith("images/Services/")) {
     return `${base}/${cleanPath}`;
   }
   return `${base}/images/${cleanPath}`;

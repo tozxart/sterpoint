@@ -5,6 +5,7 @@ import { Navbar } from "../components/common/Navbar";
 import { Footer } from "../components/common/Footer";
 import type { Language } from "../types";
 import { motion } from "framer-motion";
+import { getAssetPath } from "../utils/assetUtils";
 
 interface ServicesPageProps {
   currentLang: Language;
@@ -81,8 +82,7 @@ export function ServicesPage({
               "Części zamienne",
               "Dokumentacja techniczna",
             ],
-            image:
-              "https://topsec.fr/wp-content/uploads/2022/02/img_maintenance.jpg",
+            image: getAssetPath("images/Services/Service.jpg"),
             benefits: [
               "Minimalizacja przestojów",
               "Wydłużenie żywotności sprzętu",
@@ -101,8 +101,7 @@ export function ServicesPage({
               "Optymalizacja procesów",
               "Szkolenia personelu",
             ],
-            image:
-              "https://topsec.fr/wp-content/uploads/2022/02/img_consulting.jpg",
+            image: getAssetPath("images/Services/Consulting.jpg"),
             benefits: [
               "Zwiększenie efektywności",
               "Optymalizacja kosztów",
@@ -179,8 +178,7 @@ export function ServicesPage({
               "Spare parts",
               "Technical documentation",
             ],
-            image:
-              "https://topsec.fr/wp-content/uploads/2022/02/img_maintenance.jpg",
+            image: getAssetPath("images/Services/Service.jpg"),
             benefits: [
               "Downtime minimization",
               "Extended equipment life",
@@ -198,8 +196,7 @@ export function ServicesPage({
               "Process optimization",
               "Staff training",
             ],
-            image:
-              "https://topsec.fr/wp-content/uploads/2022/02/img_consulting.jpg",
+            image: getAssetPath("images/Services/Consulting.jpg"),
             benefits: [
               "Increased efficiency",
               "Cost optimization",
@@ -304,7 +301,7 @@ export function ServicesPage({
                     <img
                       src={service.image}
                       alt={service.title}
-                      className="w-full h-full object-contain p-4"
+                      className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-300"
                     />
                   </div>
                   <div className="p-6 flex-1 flex flex-col">
@@ -369,12 +366,8 @@ export function ServicesPage({
 
                     <div className="mt-auto">
                       <AnimatedButton
-                        href={`/services/${service.id}`}
-                        text={
-                          currentLang === "pl"
-                            ? "Dowiedz się więcej"
-                            : "Learn More"
-                        }
+                        href="/contact"
+                        text={currentLang === "pl" ? "Kontakt" : "Contact Us"}
                         variant="primary"
                         className="w-full justify-center text-base font-medium py-3 px-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
                       />
