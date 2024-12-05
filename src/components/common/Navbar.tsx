@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Logo } from "./Logo";
 import { LanguageToggle } from "./LanguageToggle";
 import type { Language } from "../../types";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface NavItem {
   label: {
@@ -87,6 +88,17 @@ export function Navbar({ currentLang, onLanguageToggle }: NavbarProps) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isMenuOpen]);
+
   const NavItem = ({ item }: { item: NavItem }) => {
     const isActive = location.pathname === item.href;
     return (
@@ -103,6 +115,36 @@ export function Navbar({ currentLang, onLanguageToggle }: NavbarProps) {
         />
       </Link>
     );
+  };
+
+  const menuVariants = {
+    closed: {
+      opacity: 0,
+      y: -20,
+      transition: {
+        duration: 0.2,
+      },
+    },
+    open: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.3,
+        staggerChildren: 0.07,
+        delayChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants = {
+    closed: {
+      opacity: 0,
+      x: -20,
+    },
+    open: {
+      opacity: 1,
+      x: 0,
+    },
   };
 
   return (
@@ -141,66 +183,76 @@ export function Navbar({ currentLang, onLanguageToggle }: NavbarProps) {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className={`lg:hidden p-2 rounded-md focus:outline-none focus:ring-2 ${
+            className={`lg:hidden p-2 rounded-full focus:outline-none focus:ring-2 transition-colors duration-200 ${
               isScrolled
                 ? "text-gray-900 hover:bg-gray-100 focus:ring-gray-300"
                 : "text-white hover:bg-white/10 focus:ring-white/30"
             }`}
             aria-label={mobileMenuText.menu[currentLang]}>
             <span className="sr-only">{mobileMenuText.menu[currentLang]}</span>
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor">
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d={
-                  isMenuOpen
-                    ? "M6 18L18 6M6 6l12 12"
-                    : "M4 6h16M4 12h16M4 18h16"
-                }
+            <div className="w-6 h-6 flex items-center justify-center relative">
+              <span
+                className={`absolute w-5 h-0.5 transform transition-all duration-300 ease-in-out ${
+                  isScrolled ? "bg-gray-900" : "bg-white"
+                } ${isMenuOpen ? "rotate-45" : "-translate-y-1"}`}
               />
-            </svg>
+              <span
+                className={`absolute w-5 h-0.5 ${
+                  isScrolled ? "bg-gray-900" : "bg-white"
+                } ${
+                  isMenuOpen ? "opacity-0" : "opacity-100"
+                } transition-opacity duration-200 ease-in-out`}
+              />
+              <span
+                className={`absolute w-5 h-0.5 transform transition-all duration-300 ease-in-out ${
+                  isScrolled ? "bg-gray-900" : "bg-white"
+                } ${isMenuOpen ? "-rotate-45" : "translate-y-1"}`}
+              />
+            </div>
           </button>
         </div>
 
         {/* Mobile Menu */}
-        {isMenuOpen && (
-          <div className="lg:hidden">
-            <div
-              className={`py-4 space-y-2 mt-4 rounded-b-lg ${
-                isScrolled
-                  ? "bg-white border-t border-gray-200"
-                  : "bg-transparent"
-              }`}>
-              {navItems.map((item) => {
-                const isActive = location.pathname === item.href;
-                return (
-                  <Link
-                    key={item.label[currentLang]}
-                    to={item.href}
-                    onClick={() => setIsMenuOpen(false)}
-                    className={`block px-4 py-2 text-base font-medium rounded-md transition-colors duration-150 ease-in-out ${
-                      isScrolled
-                        ? "text-gray-900 hover:bg-gray-50"
-                        : "text-white hover:bg-white/10"
-                    } ${isActive ? "font-semibold bg-opacity-10" : ""}`}>
-                    {item.label[currentLang]}
-                  </Link>
-                );
-              })}
-              <div className="px-4 py-2">
-                <LanguageToggle
-                  currentLang={currentLang}
-                  onToggle={onLanguageToggle}
-                />
+        <AnimatePresence>
+          {isMenuOpen && (
+            <motion.div
+              initial="closed"
+              animate="open"
+              exit="closed"
+              variants={menuVariants}
+              className="lg:hidden fixed inset-x-0 top-[60px] bottom-0 bg-[#0B1A45]/98 backdrop-blur-md">
+              <div className="h-full overflow-y-auto">
+                <motion.div className="px-4 py-6 space-y-4 flex flex-col">
+                  {navItems.map((item) => {
+                    const isActive = location.pathname === item.href;
+                    return (
+                      <motion.div
+                        key={item.label[currentLang]}
+                        variants={itemVariants}>
+                        <Link
+                          to={item.href}
+                          onClick={() => setIsMenuOpen(false)}
+                          className={`block px-4 py-3 text-lg font-medium rounded-xl transition-colors duration-200 
+                            text-white hover:bg-white/10 active:bg-white/20
+                            ${isActive ? "bg-white/15" : ""}`}>
+                          {item.label[currentLang]}
+                        </Link>
+                      </motion.div>
+                    );
+                  })}
+                  <motion.div
+                    variants={itemVariants}
+                    className="px-4 py-3 text-white">
+                    <LanguageToggle
+                      currentLang={currentLang}
+                      onToggle={onLanguageToggle}
+                    />
+                  </motion.div>
+                </motion.div>
               </div>
-            </div>
-          </div>
-        )}
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </nav>
   );
