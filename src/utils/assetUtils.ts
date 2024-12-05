@@ -61,5 +61,13 @@ export function getAssetPath(path: string): string {
   if (cleanPath.startsWith("images/Services/")) {
     return `${base}/${cleanPath}`;
   }
+  // Handle social icons
+  if (cleanPath.startsWith("social/")) {
+    return `${base}/images/${cleanPath}`;
+  }
+  // Handle logo
+  if (cleanPath === "logo.png") {
+    return `${base}/images/${cleanPath}`;
+  }
   return `${base}/images/${cleanPath}`;
 }

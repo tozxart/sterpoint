@@ -62,8 +62,7 @@ export function ServicesPage({
               "Serwis techniczny 24/7",
               "Regularne uzupełnianie produktów",
             ],
-            image:
-              "https://topsec.fr/wp-content/uploads/2022/02/img_distributeurs_FR.png",
+            image: getAssetPath("images/Services/vending.jpg"),
             benefits: [
               "Zwiększenie przychodów",
               "Automatyzacja sprzedaży",
