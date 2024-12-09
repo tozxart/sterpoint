@@ -145,10 +145,45 @@ export function ContactPage({
     },
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log(formData);
+
+    try {
+      const response = await fetch("https://formspree.io/f/xbljeyoj", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        // Reset form
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          subject: "",
+          message: "",
+        });
+
+        // Show success message
+        alert(
+          currentLang === "pl"
+            ? "Dziękujemy za wiadomość! Skontaktujemy się wkrótce."
+            : "Thank you for your message! We will contact you soon."
+        );
+      } else {
+        throw new Error("Failed to send message");
+      }
+    } catch (error: unknown) {
+      console.error("Form submission error:", error);
+      alert(
+        currentLang === "pl"
+          ? "Przepraszamy, wystąpił błąd. Prosimy spróbować później."
+          : "Sorry, there was an error. Please try again later."
+      );
+    }
   };
 
   const handleChange = (
