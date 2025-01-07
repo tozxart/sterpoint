@@ -17,6 +17,7 @@ import { TennisPadelPage } from "./pages/products/TennisPadelPage";
 import { getStoredLanguage, setStoredLanguage } from "./utils/languageUtils";
 import type { Language } from "./types";
 import { Navbar } from "./components/common/Navbar";
+import { Analytics } from "./components/common/Analytics";
 
 // ScrollToTop component to handle scroll position
 function ScrollToTop() {
@@ -48,6 +49,7 @@ export function App() {
   return (
     <Router>
       <ScrollToTop />
+      <Analytics />
       <Routes>
         <Route
           path="/"
