@@ -9,14 +9,20 @@ export const Analytics = () => {
     const script = document.createElement("script");
     script.defer = true;
     script.setAttribute("data-domain", "sterpoint.pl");
+    // Ensure HTTPS
     script.src =
       "https://plausible.io/js/script.file-downloads.hash.outbound-links.pageview-props.revenue.tagged-events.js";
+    script.crossOrigin = "anonymous"; // Add cross-origin attribute for better security
 
-    // Add the plausible queue script
+    // Add the plausible queue script with secure defaults
     const queueScript = document.createElement("script");
     queueScript.innerHTML = `
       window.plausible = window.plausible || function() { 
         (window.plausible.q = window.plausible.q || []).push(arguments) 
+      };
+      // Ensure secure defaults
+      if (window.location.protocol === 'http:') {
+        window.location.protocol = 'https:';
       }
     `;
 
@@ -37,6 +43,7 @@ export const Analytics = () => {
           path: location.pathname,
           search: location.search,
           hash: location.hash,
+          secure: window.location.protocol === "https:",
         },
       });
     }
