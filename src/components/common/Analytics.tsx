@@ -8,7 +8,8 @@ export const Analytics = () => {
     // Add the main script
     const script = document.createElement("script");
     script.defer = true;
-    script.setAttribute("data-domain", "sterpoint.pl");
+    // Include both www and non-www versions of the domain
+    script.setAttribute("data-domain", "www.sterpoint.pl,sterpoint.pl");
     // Ensure HTTPS
     script.src =
       "https://plausible.io/js/script.file-downloads.hash.outbound-links.pageview-props.revenue.tagged-events.js";
@@ -44,6 +45,7 @@ export const Analytics = () => {
           search: location.search,
           hash: location.hash,
           secure: window.location.protocol === "https:",
+          host: window.location.host,
         },
       });
     }
