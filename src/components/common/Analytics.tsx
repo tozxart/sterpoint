@@ -5,25 +5,17 @@ export const Analytics = () => {
   const location = useLocation();
 
   useEffect(() => {
-    // Add the main script
+    // Add the main Plausible script
     const script = document.createElement("script");
     script.defer = true;
-    // Include both www and non-www versions of the domain
-    script.setAttribute("data-domain", "www.sterpoint.pl,sterpoint.pl");
-    // Ensure HTTPS
-    script.src =
-      "https://plausible.io/js/script.file-downloads.hash.outbound-links.pageview-props.revenue.tagged-events.js";
-    script.crossOrigin = "anonymous"; // Add cross-origin attribute for better security
+    script.setAttribute("data-domain", "sterpoint.pl");
+    script.src = "https://plausible.io/js/script.js";
 
-    // Add the plausible queue script with secure defaults
+    // Add the plausible queue script
     const queueScript = document.createElement("script");
     queueScript.innerHTML = `
       window.plausible = window.plausible || function() { 
         (window.plausible.q = window.plausible.q || []).push(arguments) 
-      };
-      // Ensure secure defaults
-      if (window.location.protocol === 'http:') {
-        window.location.protocol = 'https:';
       }
     `;
 
@@ -36,35 +28,23 @@ export const Analytics = () => {
     };
   }, []);
 
+  // Track page views
   useEffect(() => {
-    // Track page views with additional properties
     if (window.plausible) {
-      window.plausible("pageview", {
-        props: {
-          path: location.pathname,
-          search: location.search,
-          hash: location.hash,
-          secure: window.location.protocol === "https:",
-          host: window.location.host,
-        },
-      });
+      window.plausible("pageview");
     }
   }, [location]);
 
   return null;
 };
 
-// Add TypeScript declaration with extended functionality
+// Add TypeScript declaration
 declare global {
   interface Window {
     plausible: {
       (
         event: string,
-        options?: {
-          callback?: () => void;
-          props?: Record<string, string | number | boolean>;
-          revenue?: number;
-        }
+        options?: { props?: Record<string, string | number | boolean> }
       ): void;
       q?: Array<unknown>;
     };
