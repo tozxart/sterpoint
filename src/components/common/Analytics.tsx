@@ -9,10 +9,11 @@ export const Analytics = () => {
     const script = document.createElement("script");
     script.defer = true;
     script.async = true;
-    // You'll need to replace these values with your own after setting up Umami
-    script.setAttribute("data-website-id", "YOUR-WEBSITE-ID");
-    // For self-hosted version, replace with your domain
-    script.src = "https://analytics.umami.is/script.js";
+    script.setAttribute(
+      "data-website-id",
+      "2f7df744-2e71-4dcc-8f71-2aba690f1369"
+    );
+    script.src = "https://cloud.umami.is/script.js";
 
     document.head.appendChild(script);
 
