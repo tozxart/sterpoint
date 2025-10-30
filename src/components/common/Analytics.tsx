@@ -24,7 +24,7 @@ export const Analytics = () => {
 
   // Track page views
   useEffect(() => {
-    if (window.umami) {
+    if (window.umami && typeof window.umami.trackView === "function") {
       window.umami.trackView(
         location.pathname + location.hash,
         window.location.href
