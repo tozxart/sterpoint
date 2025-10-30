@@ -27,7 +27,7 @@ export function FitnessEquipmentPage({
         subtitle: "Profesjonalny sprzęt do Twojej siłowni",
       },
       description:
-        "Oferujemy szeroki wybór profesjonalnego sprzętu fitness, który spełnia najwyższe standardy jakości i bezpieczeństwa. Nasze produkty są idealne dla siłowni, klubów fitness i obiektów sportowych.",
+        "Oferujemy szeroki wybór profesjonalnego sprzętu fitness, który spełnia najwyższe standardy jakości i bezpieczeństwa. Nasze produkty są idealne dla siłowni, klubów fitness i obiektów sportowych. Dostarczamy sprzęt fitness i akcesoria treningowe w całej Polsce – Warszawa, Poznań, Wrocław, Kraków, Gdańsk i inne miasta. Nasz serwis obejmuje montaż oraz wsparcie lokalne.",
       features: [
         {
           title: "Profesjonalna jakość",
@@ -57,7 +57,7 @@ export function FitnessEquipmentPage({
         subtitle: "Professional equipment for your gym",
       },
       description:
-        "We offer a wide range of professional fitness equipment that meets the highest quality and safety standards. Our products are perfect for gyms, fitness clubs, and sports facilities.",
+        "We offer a wide range of professional fitness equipment that meets the highest quality and safety standards. Our products are perfect for gyms, fitness clubs, and sports facilities. Fitness equipment delivered anywhere in Poland – Warsaw, Poznan, Wroclaw, Cracow, Gdansk, and more. Local installation and nationwide support.",
       features: [
         {
           title: "Professional quality",
@@ -174,6 +174,48 @@ export function FitnessEquipmentPage({
             </div>
           </div>
         </section>
+        <div className="mt-20 max-w-4xl mx-auto">
+          <h2 className="text-3xl font-bold mb-6 text-center">
+            {currentLang === "pl" ? "Najczęstsze pytania (FAQ)" : "Frequently Asked Questions (FAQ)"}
+          </h2>
+          <ul className="space-y-6 mb-8">
+            {(currentLang === "pl"
+              ? [
+                  { q: "Z jakich materiałów wykonany jest sprzęt fitness?", a: "Wszystkie urządzenia wykonane są z wysokiej klasy materiałów zapewniających wieloletnią trwałość." },
+                  { q: "Czy sprzęt posiada gwarancję?", a: "Tak, udzielamy pełnej gwarancji oraz oferujemy serwis gwarancyjny i pogwarancyjny." },
+                  { q: "Jak wygląda dostawa i montaż sprzętu?", a: "Zapewniamy szybki transport oraz fachowy montaż w Twoim obiekcie." },
+                ]
+              : [
+                  { q: "What materials are used for the fitness equipment?", a: "All devices are built using high-grade materials for long-term durability." },
+                  { q: "Is the equipment covered by a warranty?", a: "Yes, we provide full warranty and both warranty and post-warranty support." },
+                  { q: "How does delivery and installation work?", a: "We ensure prompt delivery and professional assembly at your site." },
+                ]
+            ).map((faq, idx) => (
+              <li key={idx}>
+                <strong>{faq.q}</strong>
+                <p className="ml-4 text-gray-700">{faq.a}</p>
+              </li>
+            ))}
+          </ul>
+          <h2 className="text-3xl font-bold mb-6 text-center">
+            {currentLang === "pl" ? "Opinie Klientów" : "Customer Testimonials"}
+          </h2>
+          <div className="space-y-6">
+            {currentLang === "pl"
+              ? [
+                  "Sprzęt fitness jest solidny, a obsługa bardzo profesjonalna. – Karolina, Gdańsk",
+                  "Montaż przebiegł sprawnie, a użytkownicy są bardzo zadowoleni. – Rafał, Warszawa",
+                ]
+              : [
+                  "The fitness equipment is robust and the staff is very professional. – Caroline, Gdansk",
+                  "Installation went smoothly and our users are very satisfied. – Raphael, Warsaw",
+                ].map((opinion, i) => (
+              <blockquote key={i} className="border-l-4 border-blue-500 pl-4 text-gray-600 italic">
+                {opinion}
+              </blockquote>
+            ))}
+          </div>
+        </div>
       </main>
       <Footer currentLang={currentLang} />
     </>

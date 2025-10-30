@@ -110,6 +110,10 @@ export function Footer({ currentLang }: FooterProps) {
             </p>
             <p className="text-white/80 mb-4 whitespace-pre-line">
               {content[currentLang].contact.address}
+              <br />
+              {currentLang === "pl"
+                ? "Działamy na terenie całej Polski, w tym Warszawa, Poznań, Kraków, Wrocław, Łódź, Gdańsk, Katowice. Skontaktuj się z nami po automaty vendingowe, baseny ogrodowe i serwis lokalny."
+                : "We operate across Poland including Warsaw, Poznan, Cracow, Wroclaw, Lodz, Gdansk, Katowice. Contact us for vending machines, swimming pools, and local service."}
             </p>
             <div className="space-y-2">
               <a
@@ -199,7 +203,7 @@ export function Footer({ currentLang }: FooterProps) {
                   />
                 </a>
                 <a
-                  href="https://www.facebook.com/"
+                  href="https://www.facebook.com/sterpointpl"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-white/80 hover:text-white transition-colors">
@@ -210,7 +214,7 @@ export function Footer({ currentLang }: FooterProps) {
                   />
                 </a>
                 <a
-                  href="https://www.instagram.com/"
+                  href="https://www.instagram.com/sterpointpl/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-white/80 hover:text-white transition-colors">

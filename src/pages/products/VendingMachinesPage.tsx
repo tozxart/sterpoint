@@ -497,7 +497,7 @@ export function VendingMachinesPage({
         subtitle: "Nowoczesne rozwiązania dostępne 24/7",
       },
       description:
-        "Nasze automaty vendingowe to nowoczesne rozwiązanie zapewniające dostęp do akcesoriów sportowych przez całą dobę. Oferujemy różne typy automatów dostosowane do indywidualnych potrzeb klientów.",
+        "Nasze automaty vendingowe to nowoczesne rozwiązanie zapewniające dostęp do akcesoriów sportowych przez całą dobę. Oferujemy różne typy automatów dostosowane do indywidualnych potrzeb klientów. Obsługujemy zarówno duże miasta jak Warszawa, Poznań, Kraków, Wrocław, Łódź, jak i mniejsze miejscowości w całej Polsce. Nasze automaty vendingowe znajdziesz w nowoczesnych siłowniach, basenach, klubach sportowych, szkołach i biurach. Potrzebujesz serwisu lokalnego lub instalacji automatu? Skontaktuj się z nami!",
       features: [
         {
           title: "Płatności bezgotówkowe",
@@ -541,7 +541,7 @@ export function VendingMachinesPage({
         subtitle: "Modern solutions available 24/7",
       },
       description:
-        "Our vending machines are a modern solution providing access to sports accessories around the clock. We offer various types of machines tailored to individual customer needs.",
+        "Our vending machines are a modern solution providing access to sports accessories around the clock. We offer various types of machines tailored to individual customer needs. We serve all of Poland, including Warsaw, Poznan, Cracow, Wroclaw, Lodz, and more. Sterpoint vending machines are available in gyms, pools, sports clubs, schools, and offices nationwide. Need local installation or support? Contact us!",
       features: [
         {
           title: "Cashless payments",
@@ -707,6 +707,70 @@ export function VendingMachinesPage({
             </div>
           </div>
         </section>
+        <div className="mt-20 max-w-4xl mx-auto">
+          <h2 className="text-3xl font-bold mb-6 text-center">
+            {currentLang === "pl"
+              ? "Najczęstsze pytania (FAQ)"
+              : "Frequently Asked Questions (FAQ)"}
+          </h2>
+          <ul className="space-y-6 mb-8">
+            {(currentLang === "pl"
+              ? [
+                  {
+                    q: "Jakie są korzyści z instalacji automatów vendingowych Sterpoint?",
+                    a: "Nasze automaty zapewniają klientom całodobowy dostęp do szerokiej gamy produktów, zwiększając wygodę oraz przychody Twojego obiektu.",
+                  },
+                  {
+                    q: "Czy mogę dostosować asortyment produktów?",
+                    a: "Tak, oferujemy pełną personalizację asortymentu zgodnie z indywidualnymi potrzebami obiektu.",
+                  },
+                  {
+                    q: "Jak wygląda serwis i konserwacja automatów?",
+                    a: "Zapewniamy kompleksowy serwis techniczny oraz zdalne monitorowanie pracy automatu.",
+                  },
+                ]
+              : [
+                  {
+                    q: "What are the benefits of installing Sterpoint vending machines?",
+                    a: "Our machines offer customers 24/7 access to a wide range of products, increasing convenience and facility revenue.",
+                  },
+                  {
+                    q: "Can I customize the product selection?",
+                    a: "Yes, we provide full customization options tailored to your facility's needs.",
+                  },
+                  {
+                    q: "How is the maintenance and servicing handled?",
+                    a: "We provide comprehensive technical support and remote monitoring for every machine.",
+                  },
+                ]
+            ).map((faq, idx) => (
+              <li key={idx}>
+                <strong>{faq.q}</strong>
+                <p className="ml-4 text-gray-700">{faq.a}</p>
+              </li>
+            ))}
+          </ul>
+          <h2 className="text-3xl font-bold mb-6 text-center">
+            {currentLang === "pl" ? "Opinie Klientów" : "Customer Testimonials"}
+          </h2>
+          <div className="space-y-6">
+            {currentLang === "pl"
+              ? [
+                  "Automaty vendingowe Sterpoint doskonale sprawdziły się w naszym centrum sportowym. Klienci są zachwyceni wygodą i szeroką gamą produktów. – Marta, Warszawa",
+                  "Instalacja automatów przebiegła sprawnie, serwis działa bez zarzutu. Polecam każdemu właścicielowi obiektu sportowego. – Piotr, Kraków",
+                ]
+              : [
+                  "Sterpoint vending machines have been a great addition to our sports facility. Our clients love the convenience and product variety. – Marta, Warsaw",
+                  "Installation was smooth and the support team is excellent. Highly recommended to any facility owner. – Peter, Krakow",
+                ].map((opinion, i) => (
+                  <blockquote
+                    key={i}
+                    className="border-l-4 border-blue-500 pl-4 text-gray-600 italic">
+                    {opinion}
+                  </blockquote>
+                ))}
+          </div>
+        </div>
       </main>
       <Footer currentLang={currentLang} />
     </>

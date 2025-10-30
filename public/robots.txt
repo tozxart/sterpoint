@@ -1,0 +1,6 @@
+# robots.txt for sterpoint.pl - SEO Best Practices 2025
+User-agent: *
+Disallow:
+
+# Add sitemap location
+Sitemap: https://sterpoint.pl/sitemap.xml

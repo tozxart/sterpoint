@@ -288,6 +288,11 @@ export function ContactPage({
                       </div>
                     ))}
                   </div>
+                  <p className="mt-2 text-gray-700">
+                    {currentLang === "pl"
+                      ? "Obsługujemy Warszawa, Poznań, Kraków, Wrocław, Łódź, Gdańsk, Katowice i cały kraj. Skorzystaj z oferty automatów vendingowych, basenów i sprzętu fitness dostępnych lokalnie."
+                      : "Serving Warsaw, Poznan, Cracow, Wroclaw, Lodz, Gdansk, Katowice and all regions in Poland. Get local vending machines, pools, and fitness equipment supported nationwide."}
+                  </p>
                 </motion.div>
               </div>
 

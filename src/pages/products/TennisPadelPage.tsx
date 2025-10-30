@@ -27,7 +27,7 @@ export function TennisPadelPage({
         subtitle: "Profesjonalny sprzęt dla graczy",
       },
       description:
-        "Oferujemy szeroki wybór profesjonalnego sprzętu do tenisa i padla, który spełnia najwyższe standardy jakości. Nasze produkty są idealne dla klubów sportowych, kortów i szkół tenisa.",
+        "Oferujemy szeroki wybór profesjonalnego sprzętu do tenisa i padla, który spełnia najwyższe standardy jakości. Nasze produkty są idealne dla klubów sportowych, kortów i szkół tenisa. Wyposażamy kluby oraz indywidualnych klientów w sprzęt tenisowy i padlowy na terenie całej Polski: Warszawa, Poznań, Łódź, Gdańsk, Wrocław i inne. Oferujemy szybką dostawę i serwis lokalny.",
       features: [
         {
           title: "Najwyższa jakość",
@@ -56,7 +56,7 @@ export function TennisPadelPage({
         subtitle: "Professional equipment for players",
       },
       description:
-        "We offer a wide range of professional tennis and padel equipment that meets the highest quality standards. Our products are perfect for sports clubs, courts, and tennis schools.",
+        "We offer a wide range of professional tennis and padel equipment that meets the highest quality standards. Our products are perfect for sports clubs, courts, and tennis schools. We equip clubs and individuals with tennis and padel gear throughout Poland: Warsaw, Poznan, Lodz, Gdansk, Wroclaw and more. Fast delivery and local support.",
       features: [
         {
           title: "Highest quality",
@@ -170,6 +170,48 @@ export function TennisPadelPage({
             </div>
           </div>
         </section>
+        <div className="mt-20 max-w-4xl mx-auto">
+          <h2 className="text-3xl font-bold mb-6 text-center">
+            {currentLang === "pl" ? "Najczęstsze pytania (FAQ)" : "Frequently Asked Questions (FAQ)"}
+          </h2>
+          <ul className="space-y-6 mb-8">
+            {(currentLang === "pl"
+              ? [
+                  { q: "Jakiego rodzaju produkty tenisowe i padlowe oferujecie?", a: "Dostarczamy szeroki wybór rakiet, piłek, akcesoriów oraz odzieży sportowej dla każdej grupy wiekowej." },
+                  { q: "Czy możliwa jest personalizacja produktów?", a: "Oferujemy usługę personalizacji wybranych produktów i akcesoriów według Twoich potrzeb." },
+                  { q: "Jaki jest czas realizacji zamówienia?", a: "Standardowy czas dostawy to 3-7 dni roboczych." },
+                ]
+              : [
+                  { q: "What tennis and padel products do you offer?", a: "We supply a wide range of rackets, balls, accessories and sportswear for every age group." },
+                  { q: "Can products be customized?", a: "We offer product and accessory customization tailored to your requirements." },
+                  { q: "What is the delivery timeline?", a: "Standard delivery is 3-7 working days." },
+                ])
+              .map((faq, idx) => (
+                <li key={idx}>
+                  <strong>{faq.q}</strong>
+                  <p className="ml-4 text-gray-700">{faq.a}</p>
+                </li>
+              ))}
+          </ul>
+          <h2 className="text-3xl font-bold mb-6 text-center">
+            {currentLang === "pl" ? "Opinie Klientów" : "Customer Testimonials"}
+          </h2>
+          <div className="space-y-6">
+            {currentLang === "pl"
+              ? [
+                  "Świetnej jakości produkty i sprawna obsługa – polecam każdemu klubowi. – Marek, Łódź",
+                  "Szybka realizacja zamówienia, szeroki wybór akcesoriów. – Ania, Katowice",
+                ]
+              : [
+                  "Great quality products and efficient service – recommended for every club. – Mark, Lodz",
+                  "Quick fulfillment and a wide choice of accessories. – Ann, Katowice",
+                ].map((opinion, i) => (
+              <blockquote key={i} className="border-l-4 border-blue-500 pl-4 text-gray-600 italic">
+                {opinion}
+              </blockquote>
+            ))}
+          </div>
+        </div>
       </main>
       <Footer currentLang={currentLang} />
     </>

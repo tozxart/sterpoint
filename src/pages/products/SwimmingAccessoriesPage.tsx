@@ -27,7 +27,7 @@ export function SwimmingAccessoriesPage({
         subtitle: "Profesjonalny sprzęt dla Twojego obiektu",
       },
       description:
-        "Oferujemy szeroki wybór profesjonalnych akcesoriów pływackich, które spełniają najwyższe standardy jakości i bezpieczeństwa. Nasze produkty są idealne dla basenów publicznych, klubów sportowych i szkół pływania.",
+        "Oferujemy szeroki wybór profesjonalnych akcesoriów pływackich, które spełniają najwyższe standardy jakości i bezpieczeństwa. Nasze produkty są idealne dla basenów publicznych, klubów sportowych i szkół pływania. Zapewniamy dostawę i serwis dla basenów w całej Polsce, w tym w Warszawie, Poznaniu, Krakowie, Wrocławiu, Łodzi i innych miejscowościach. Akcesoria basenowe, montaż i wsparcie lokalne dostępne szybko i wygodnie.",
       features: [
         {
           title: "Wysokiej jakości materiały",
@@ -63,7 +63,7 @@ export function SwimmingAccessoriesPage({
         subtitle: "Professional equipment for your facility",
       },
       description:
-        "We offer a wide selection of professional swimming accessories that meet the highest quality and safety standards. Our products are perfect for public pools, sports clubs, and swimming schools.",
+        "We offer a wide selection of professional swimming accessories that meet the highest quality and safety standards. Our products are perfect for public pools, sports clubs, and swimming schools. We supply swimming accessories to pools throughout Poland, including major cities like Warsaw, Poznan, Cracow, Wroclaw, Lodz, and more. Fast delivery and local support available.",
       features: [
         {
           title: "High-quality materials",
@@ -200,6 +200,65 @@ export function SwimmingAccessoriesPage({
                   />
                 </div>
               </motion.div>
+            ))}
+          </div>
+        </div>
+        <div className="mt-20 max-w-4xl mx-auto">
+          <h2 className="text-3xl font-bold mb-6 text-center">
+            {currentLang === "pl" ? "Najczęstsze pytania (FAQ)" : "Frequently Asked Questions (FAQ)"}
+          </h2>
+          <ul className="space-y-6 mb-8">
+            {(currentLang === "pl"
+              ? [
+                  {
+                    q: "Czy akcesoria pływackie są trwałe i bezpieczne?",
+                    a: "Wszystkie nasze akcesoria spełniają rygorystyczne normy bezpieczeństwa i cechują się wysoką trwałością.",
+                  },
+                  {
+                    q: "Czy oferujecie produkty dla dzieci i dorosłych?",
+                    a: "Tak, nasza oferta obejmuje produkty dla użytkowników w każdym wieku.",
+                  },
+                  {
+                    q: "Jak wygląda proces zamówienia i instalacji?",
+                    a: "Zapewniamy pełną obsługę zamówienia oraz szybki montaż produktów na miejscu.",
+                  },
+                ]
+              : [
+                  {
+                    q: "Are swimming accessories durable and safe?",
+                    a: "All accessories meet stringent safety standards and are highly durable.",
+                  },
+                  {
+                    q: "Do you offer products for both children and adults?",
+                    a: "Yes, our range includes products for all age groups.",
+                  },
+                  {
+                    q: "How do ordering and installation work?",
+                    a: "We provide full order support and fast onsite product installation.",
+                  },
+                ]).map((faq, idx) => (
+              <li key={idx}>
+                <strong>{faq.q}</strong>
+                <p className="ml-4 text-gray-700">{faq.a}</p>
+              </li>
+            ))}
+          </ul>
+          <h2 className="text-3xl font-bold mb-6 text-center">
+            {currentLang === "pl" ? "Opinie Klientów" : "Customer Testimonials"}
+          </h2>
+          <div className="space-y-6">
+            {currentLang === "pl"
+              ? [
+                  "Produkty są niezwykle solidne, a obsługa klienta zawsze służy pomocą. – Anna, Poznań",
+                  "Szeroki asortyment pozwolił nam wyposażyć basen we wszystko, czego potrzebowaliśmy. – Tomasz, Wrocław",
+                ]
+              : [
+                  "The products are very sturdy and the customer service is always helpful. – Anna, Poznan",
+                  "Wide range of products let us equip our pool with everything we needed. – Tom, Wroclaw",
+                ].map((opinion, i) => (
+              <blockquote key={i} className="border-l-4 border-blue-500 pl-4 text-gray-600 italic">
+                {opinion}
+              </blockquote>
             ))}
           </div>
         </div>
