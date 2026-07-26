@@ -1,143 +1,31 @@
-import {
-  HashRouter as Router,
-  Routes,
-  Route,
-  useLocation,
-} from "react-router-dom";
-import { useState, useEffect } from "react";
-import { MainPage } from "./pages/MainPage";
-import { AboutPage } from "./pages/AboutPage";
-import { ProductsPage } from "./pages/ProductsPage";
-import { ServicesPage } from "./pages/ServicesPage";
-import { ContactPage } from "./pages/ContactPage";
-import { VendingMachinesPage } from "./pages/products/VendingMachinesPage";
-import { SwimmingAccessoriesPage } from "./pages/products/SwimmingAccessoriesPage";
-import { FitnessEquipmentPage } from "./pages/products/FitnessEquipmentPage";
-import { TennisPadelPage } from "./pages/products/TennisPadelPage";
-import { getStoredLanguage, setStoredLanguage } from "./utils/languageUtils";
-import type { Language } from "./types";
-import { Navbar } from "./components/common/Navbar";
+import { AlertTriangle } from "lucide-react";
 import { Analytics } from "./components/common/Analytics";
 
-// ScrollToTop component to handle scroll position
-function ScrollToTop() {
-  const { pathname } = useLocation();
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
-
-  return null;
+function MaintenanceScreen() {
+  return (
+    <main className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-950 via-slate-900 to-slate-800 px-6 text-white">
+      <div className="max-w-xl rounded-3xl border border-white/10 bg-white/5 p-8 text-center shadow-2xl backdrop-blur-sm md:p-12">
+        <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-amber-400/15 text-amber-300">
+          <AlertTriangle className="h-8 w-8" aria-hidden="true" />
+        </div>
+        <p className="mb-3 text-sm font-semibold uppercase tracking-[0.3em] text-amber-200/80">
+          Temporarily Unavailable
+        </p>
+        <h1 className="text-3xl font-bold md:text-5xl">Website unavailable</h1>
+        <p className="mt-4 text-base leading-7 text-slate-300 md:text-lg">
+          This website is currently unavailable. Please check back later.
+        </p>
+      </div>
+    </main>
+  );
 }
 
 export function App() {
-  const [currentLang, setCurrentLang] = useState<Language>(getStoredLanguage());
-
-  const handleLanguageToggle = (lang: Language) => {
-    setStoredLanguage(lang);
-    setCurrentLang(lang);
-  };
-
-  // Initialize language on app load
-  useEffect(() => {
-    const savedLang = getStoredLanguage();
-    if (savedLang !== currentLang) {
-      setCurrentLang(savedLang);
-    }
-  }, []);
-
   return (
-    <Router>
-      <ScrollToTop />
+    <>
       <Analytics />
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <MainPage
-              currentLang={currentLang}
-              onLanguageToggle={handleLanguageToggle}
-            />
-          }
-        />
-        <Route
-          path="/about"
-          element={
-            <AboutPage
-              currentLang={currentLang}
-              onLanguageToggle={handleLanguageToggle}
-            />
-          }
-        />
-        <Route
-          path="/products"
-          element={
-            <ProductsPage
-              currentLang={currentLang}
-              onLanguageToggle={handleLanguageToggle}
-            />
-          }
-        />
-        <Route
-          path="/products/vending-machines"
-          element={
-            <VendingMachinesPage
-              currentLang={currentLang}
-              onLanguageToggle={handleLanguageToggle}
-            />
-          }
-        />
-        <Route
-          path="/products/swimming-accessories"
-          element={
-            <SwimmingAccessoriesPage
-              currentLang={currentLang}
-              onLanguageToggle={handleLanguageToggle}
-            />
-          }
-        />
-        <Route
-          path="/products/fitness-equipment"
-          element={
-            <FitnessEquipmentPage
-              currentLang={currentLang}
-              onLanguageToggle={handleLanguageToggle}
-            />
-          }
-        />
-        <Route
-          path="/products/tennis-padel"
-          element={
-            <TennisPadelPage
-              currentLang={currentLang}
-              onLanguageToggle={handleLanguageToggle}
-            />
-          }
-        />
-        <Route
-          path="/services"
-          element={
-            <ServicesPage
-              currentLang={currentLang}
-              onLanguageToggle={handleLanguageToggle}
-            />
-          }
-        />
-        <Route
-          path="/contact"
-          element={
-            <ContactPage
-              currentLang={currentLang}
-              onLanguageToggle={handleLanguageToggle}
-            />
-          }
-        />
-      </Routes>
-      <Navbar
-        currentLang={currentLang}
-        onLanguageToggle={handleLanguageToggle}
-      />
-    </Router>
+      <MaintenanceScreen />
+    </>
   );
 }
 
