@@ -27,6 +27,10 @@ function MaintenanceScreen() {
               settled. Complete records of the commission are retained: the
               agreed scope, the delivery confirmations and the correspondence.
             </p>
+            <p className="mt-4 border-l-2 border-amber-400/70 pl-3 text-sm font-semibold leading-6 text-amber-100">
+              If the balance remains unsettled, the matter will be pursued
+              through all available legal remedies.
+            </p>
           </section>
 
           <section lang="pl" className="md:border-l md:border-white/10 md:pl-10">
@@ -45,6 +49,10 @@ function MaintenanceScreen() {
               faktur. Wykonawca dysponuje pełną dokumentacją zlecenia:
               uzgodnionym zakresem prac, potwierdzeniami przekazania oraz
               korespondencją.
+            </p>
+            <p className="mt-4 border-l-2 border-amber-400/70 pl-3 text-sm font-semibold leading-6 text-amber-100">
+              W przypadku braku uregulowania należności sprawa zostanie
+              skierowana na drogę prawną.
             </p>
           </section>
         </div>
