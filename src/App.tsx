@@ -4,8 +4,36 @@ const SETTLEMENT_CONTACT_EMAIL = "fallag.rayen@gmail.com";
 
 function MaintenanceScreen() {
   return (
-    <main className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-950 via-slate-900 to-slate-800 px-6 py-12 text-white">
-      <div className="w-full max-w-4xl rounded-3xl border border-white/10 bg-white/5 p-8 shadow-2xl backdrop-blur-sm md:p-12">
+    <main className="maintenance-page">
+      <div className="maintenance-background" aria-hidden="true">
+        <div className="maintenance-slider maintenance-slider-left">
+          <div className="maintenance-slider-track maintenance-slider-track-left">
+            <img src="/images/test.png" alt="" />
+            <img src="/images/test.png" alt="" />
+            <img src="/images/test.png" alt="" />
+            <img src="/images/test.png" alt="" />
+            <img src="/images/test.png" alt="" />
+            <img src="/images/test.png" alt="" />
+            <img src="/images/test.png" alt="" />
+            <img src="/images/test.png" alt="" />
+          </div>
+        </div>
+
+        <div className="maintenance-slider maintenance-slider-right">
+          <div className="maintenance-slider-track maintenance-slider-track-right">
+            <img src="/images/test.png" alt="" />
+            <img src="/images/test.png" alt="" />
+            <img src="/images/test.png" alt="" />
+            <img src="/images/test.png" alt="" />
+            <img src="/images/test.png" alt="" />
+            <img src="/images/test.png" alt="" />
+            <img src="/images/test.png" alt="" />
+            <img src="/images/test.png" alt="" />
+          </div>
+        </div>
+      </div>
+
+      <div className="maintenance-card">
         <div className="mx-auto mb-8 flex h-16 w-16 items-center justify-center rounded-full bg-amber-400/15 text-amber-300">
           <FileText className="h-8 w-8" aria-hidden="true" />
         </div>
@@ -33,7 +61,9 @@ function MaintenanceScreen() {
             </p>
           </section>
 
-          <section lang="pl" className="md:border-l md:border-white/10 md:pl-10">
+          <section
+            lang="pl"
+            className="md:border-l md:border-white/10 md:pl-10">
             <p className="mb-3 text-xs font-semibold uppercase tracking-[0.3em] text-amber-200/80">
               Polski
             </p>
@@ -41,8 +71,8 @@ function MaintenanceScreen() {
               Serwis został wstrzymany
             </h2>
             <p className="mt-4 text-base font-semibold leading-7 text-slate-100">
-              Oprogramowanie zamówione przez tę firmę zostało wykonane
-              i przekazane w całości. Należność za nie pozostaje nieuregulowana.
+              Oprogramowanie zamówione przez tę firmę zostało wykonane i
+              przekazane w całości. Należność za nie pozostaje nieuregulowana.
             </p>
             <p className="mt-3 text-sm leading-6 text-slate-400">
               Serwis zostanie przywrócony niezwłocznie po opłaceniu zaległych
@@ -67,8 +97,7 @@ function MaintenanceScreen() {
           </p>
           <a
             className="mt-3 inline-block break-all text-lg font-bold text-amber-300 underline underline-offset-4 hover:text-amber-200"
-            href={`mailto:${SETTLEMENT_CONTACT_EMAIL}`}
-          >
+            href={`mailto:${SETTLEMENT_CONTACT_EMAIL}`}>
             {SETTLEMENT_CONTACT_EMAIL}
           </a>
           <p className="mt-6 text-xs uppercase tracking-[0.2em] text-slate-500">
